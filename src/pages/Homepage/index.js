@@ -12,8 +12,6 @@ const Homepage = () => {
   const appLoading = useSelector(selectAppLoading)
   const dispatch = useDispatch()
   
-  console.log(homepages)
-
   useEffect(() => {
     dispatch(fetchHomepages())
   }, [dispatch])

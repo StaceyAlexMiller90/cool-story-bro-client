@@ -12,16 +12,12 @@ const HomepageDetails = () => {
   const homepage = useSelector(selectHomepageDetails)
   const appLoading = useSelector(selectAppLoading)
   const { id } = useParams();
-
-  const sortedStories = homepage.stories.sort((a,b) => a.createdAt - b.createdAt)
-  
+ 
   const dispatch = useDispatch()
   
   useEffect(() => {
     dispatch(fetchSingleHomepage(id))
   }, [dispatch, id])
-
-  console.log(homepage)
 
   return (
     <> {!appLoading ? 
@@ -32,7 +28,7 @@ const HomepageDetails = () => {
         background={homepage.backgroundColor}
         color={homepage.color}
       />
-      <Stories stories={sortedStories}/>
+      <Stories stories={homepage.stories}/>
     </> 
     : <Loading />   
       }
