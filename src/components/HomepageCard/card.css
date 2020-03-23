@@ -1,0 +1,77 @@
+.ba {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.lh-copy {
+  line-height: 1.5;
+}
+
+.mw5 {
+  max-width: 16rem;
+}
+
+.pa3 {
+  padding: 1rem;
+}
+
+.pv2 {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.ph3 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mv0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.mv4 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.f4 {
+  font-size: 1.25rem;
+}
+
+.f6 {
+  font-size: .875rem;
+}
+
+.measure {
+  max-width: 30em;
+}
+
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+.left {
+  text-align: left;
+}
+
+.mw6-ns {
+  max-width: 32rem;
+}
+
+.f5-ns {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+
+  .mw6-ns {
+    max-width: 25rem;
+  }
+  
+}
