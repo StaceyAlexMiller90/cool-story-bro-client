@@ -18,8 +18,6 @@ const Postform = (props) => {
       }
     )
 
-    console.log(post)
-
   const postForm = (event) => {
     event.preventDefault()
     dispatch(addStory(post))
@@ -34,7 +32,7 @@ const Postform = (props) => {
 
   return (
     <Container>
-    <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5" onSubmit={postForm}>
+    <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
       <h1 className="mt-5 mb-5">Post a cool story bro</h1>
       <Form.Group controlId="formBasicName">
         <Form.Label>Name</Form.Label>

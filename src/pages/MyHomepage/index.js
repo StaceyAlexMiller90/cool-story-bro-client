@@ -44,7 +44,7 @@ const MyHomepage = () => {
                   <Button onClick={() => setPost(true)}>Post a cool story bro</Button>
                   {!homepage.stories.length ? null : <Stories stories={homepage.stories}/>}
                 </div>
-               : edit ? <Editform userId={id}/> 
+               : edit ? <Editform userId={id} homepageId={homepage.id}/> 
                : post ? <Postform homepageId={homepage.id}/> 
                : null}
       

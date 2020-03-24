@@ -3,7 +3,6 @@ import Carousel from 'react-bootstrap/Carousel'
 
 const Stories = (props) => {
 
-  console.log(props)
   return (
     <div>
       <Carousel className='w-50'>

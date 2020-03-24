@@ -20,12 +20,23 @@ export default (state = initialState, action) => {
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
     
-    case ADD_STORY:
+    case 'ADD_STORY':
       return {
         ...state,
         homepage: {
           ...state.homepage,
           stories: [...state.homepage.stories, action.payload]
+        }
+      };
+
+    case 'EDIT_HOMEPAGE':
+      // console.log('Editing!')
+      // break;
+      return {
+        ...state,
+        homepage: {
+          ...state.homepage, ...action.payload,
+          stories: [...state.homepage.stories]
         }
       };
 
