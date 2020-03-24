@@ -11,6 +11,7 @@ import {
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
+export const ADD_STORY = 'ADD_STORY'
 
 const loginSuccess = userWithToken => {
   return {
@@ -109,3 +110,30 @@ export const getUserWithStoredToken = () => {
     }
   };
 };
+
+const addStoryToHomepage = (data) => {
+  return {type: ADD_STORY, payload: data}
+}
+
+export const addStory = (story) => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState())
+
+    dispatch(appLoading())
+    const { name, content, imageUrl, homepageId } = story
+    try {
+      const response = await axios.post(`${apiUrl}/homepages/${homepageId}/stories`,
+      { name, content, imageUrl, homepageId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      dispatch(addStoryToHomepage(response.data))
+      dispatch(showMessageWithTimeout("success", false, "Post Added!", 1500))
+    } catch (e) {
+      console.log(e.message)
+    }
+    dispatch(appDoneLoading())
+  }
+}

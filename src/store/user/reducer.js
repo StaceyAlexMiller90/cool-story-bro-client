@@ -1,4 +1,4 @@
-import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID } from "./actions";
+import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID, ADD_STORY } from "./actions";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -19,6 +19,15 @@ export default (state = initialState, action) => {
 
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
+    
+    case ADD_STORY:
+      return {
+        ...state,
+        homepage: {
+          ...state.homepage,
+          stories: [...state.homepage.stories, action.payload]
+        }
+      };
 
     default:
       return state;
