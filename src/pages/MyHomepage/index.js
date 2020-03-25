@@ -10,16 +10,17 @@ import Editform from '../../components/Editform'
 import Postform from '../../components/Postform'
 
 
-const MyHomepage = () => {
+const MyHomepage = (props) => {
   const history = useHistory()
   const [ edit, setEdit ] = useState(false)
   const [ post, setPost ] = useState(false)
   const {token, homepage, id } = useSelector(selectUser)
- 
+  const key = props.location.key
+
   useEffect(() => {
     setEdit(false)
     setPost(false)
-  }, [homepage])
+  }, [homepage, key])
 
   if (token === null) {
     history.push("/");

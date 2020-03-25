@@ -7,21 +7,27 @@ import { selectAppLoading } from '../../store/appState/selectors'
 import HomePageCard from '../../components/HomepageCard'
 import Loading from '../../components/Loading'
 
-const Homepage = () => {
+const Homepage = (props) => {
   const homepages = useSelector(selectHomepages)
   const appLoading = useSelector(selectAppLoading)
   const dispatch = useDispatch()
+  const pagekey = props.location.key
+
+  console.log(pagekey)
   
   useEffect(() => {
     dispatch(fetchHomepages())
-  }, [dispatch])
+  }, [dispatch, pagekey])
+
+  // useEffect(() => {
+  //   console.log("refresh")
+  // }, [pagekey])
 
   return (
     <div>
       <Jumbotron>
         <h1>Homepages</h1>
       </Jumbotron>
-      {console.log(appLoading)}
       {appLoading ? <Loading /> 
         : homepages.map(page => {
             return <HomePageCard 

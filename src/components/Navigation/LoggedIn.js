@@ -8,13 +8,13 @@ import NavbarItem from "./NavbarItem";
 
 export default function LoggedIn() {
   const dispatch = useDispatch();
-
+  
   const user = useSelector(selectUser);
 
     return (
     <>
-      <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item>
       <NavbarItem path={`/myhomepage`} linkText="My Page" />
+      <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item>
       <Button onClick={() => dispatch(logOut())}>Logout</Button>
     </>
   );

@@ -12,12 +12,9 @@ export const homepages = response => {
 export const fetchHomepages = () => {
   return async (dispatch, getState) => {
     dispatch(appLoading())
-    const state = getState()
     try {
-      if(!state.homepage.length) {
       const response = await axios.get(`${apiUrl}/homepages`)
       dispatch(homepages(response.data))
-      }
     } catch (e) {
       console.log(e.message)
     }
