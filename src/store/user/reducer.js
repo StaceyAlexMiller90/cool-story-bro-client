@@ -4,7 +4,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   name: null,
   email: null,
-  homepage: null
+  homepage: null,
 };
 
 export default (state = initialState, action) => {
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
         homepage: {
           ...state.homepage,
           stories: [...state.homepage.stories, action.payload]
-        }
+        },
       };
 
     case 'EDIT_HOMEPAGE':

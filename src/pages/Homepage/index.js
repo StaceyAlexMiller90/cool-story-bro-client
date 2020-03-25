@@ -13,15 +13,11 @@ const Homepage = (props) => {
   const dispatch = useDispatch()
   const pagekey = props.location.key
 
-  console.log(pagekey)
+  console.log(homepages)
   
   useEffect(() => {
     dispatch(fetchHomepages())
   }, [dispatch, pagekey])
-
-  // useEffect(() => {
-  //   console.log("refresh")
-  // }, [pagekey])
 
   return (
     <div>
