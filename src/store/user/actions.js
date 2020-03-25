@@ -164,3 +164,23 @@ export const changePage = (page) => {
   }
 }
 
+export const likeUnlikeStory = (storyId, userId) => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState())
+
+    dispatch(appLoading())
+    try {
+      const response = await axios.post(`${apiUrl}/likes`,
+      { storyId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      dispatch(updateHomepage(response.data))
+    } catch (e) {
+      console.log(e.message)
+    }
+    dispatch(appDoneLoading())
+  }
+}

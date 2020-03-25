@@ -14,7 +14,7 @@ const MyHomepage = (props) => {
   const history = useHistory()
   const [ edit, setEdit ] = useState(false)
   const [ post, setPost ] = useState(false)
-  const {token, homepage, id, likedStories } = useSelector(selectUser)
+  const {token, homepage, id } = useSelector(selectUser)
   const key = props.location.key
 
   console.log(homepage)
@@ -44,7 +44,7 @@ const MyHomepage = (props) => {
       {buttons ? <div className='buttonbar'>
                   <Button onClick={() => setEdit(true)}>Edit My Page</Button>
                   <Button onClick={() => setPost(true)}>Post a cool story bro</Button>
-                  {!homepage.stories.length ? null : <Stories stories={homepage.stories} likedStories={likedStories}/>}
+                  {!homepage.stories.length ? null : <Stories stories={homepage.stories}/>}
                 </div>
                : edit ? <Editform userId={id} homepageId={homepage.id}/> 
                : post ? <Postform homepageId={homepage.id}/> 
