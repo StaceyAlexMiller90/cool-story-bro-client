@@ -23,10 +23,6 @@ export const fetchSingleHomepage = (id) => {
   }
 }
 
-const addLike = (data) => {
-  return {type: 'ADD_LIKE', payload: data}
-}
-
 export const likeStory = (storyId, userId, homepageId) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState())

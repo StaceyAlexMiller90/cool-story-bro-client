@@ -12,7 +12,6 @@ const HomepageDetails = () => {
   const homepage = useSelector(selectHomepageDetails)
   const appLoading = useSelector(selectAppLoading)
   const { id } = useParams();
-  const likes = homepage.stories.users
   const dispatch = useDispatch()
   
   useEffect(() => {
