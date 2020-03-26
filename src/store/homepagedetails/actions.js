@@ -31,9 +31,9 @@ export const likeStory = (storyId, userId, homepageId) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState())
     dispatch(appLoading())
-    console.log('homepageID', homepageId)
+   
     try {
-      const response = await axios.post(`${apiUrl}/likes`,
+    await axios.post(`${apiUrl}/likes`,
       { userId, storyId },
       {
         headers: {
@@ -48,24 +48,22 @@ export const likeStory = (storyId, userId, homepageId) => {
   }
 }
 
-export const unLikeStory = (storyId, userId) => {
+export const unLikeStory = (storyId, userId, homepageId) => {
   return async (dispatch, getState) => {
-    // const token = selectToken(getState())
+    const token = selectToken(getState())
+    dispatch(appLoading())
 
-    // dispatch(appLoading())
-    // try {
-    //   const response = await axios.post(`${apiUrl}/me/likes`,
-    //   { storyId },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`
-    //     }
-    //   })
-    //   dispatch(addLike(response.data))
-    // } catch (e) {
-    //   console.log(e.message)
-    // }
-    // dispatch(appDoneLoading())
-    console.log("Unliking")
+    try {
+     await axios.delete(`${apiUrl}/likes`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }, data: { userId, storyId }
+      })
+      dispatch(fetchSingleHomepage(homepageId))
+    } catch (e) {
+      console.log("This is the error!",e.message)
+    }
+    dispatch(appDoneLoading())
   }
 }
