@@ -17,7 +17,6 @@ const MyHomepage = (props) => {
   const {token, homepage, id } = useSelector(selectUser)
   const key = props.location.key
 
-  console.log(homepage)
   useEffect(() => {
     setEdit(false)
     setPost(false)

@@ -12,9 +12,7 @@ const Homepage = (props) => {
   const appLoading = useSelector(selectAppLoading)
   const dispatch = useDispatch()
   const pagekey = props.location.key
-
-  console.log(homepages)
-  
+ 
   useEffect(() => {
     dispatch(fetchHomepages())
   }, [dispatch, pagekey])

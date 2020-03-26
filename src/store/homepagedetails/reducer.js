@@ -1,5 +1,5 @@
 const initialState = {
-  stories: []
+    stories: []
 }
 
 export default (state = initialState, action) => {
@@ -7,7 +7,16 @@ export default (state = initialState, action) => {
     
     case 'SINGLE_HOMEPAGE_DETAILS_FETCHED':
       return {...action.payload};
-  
+    
+    // case 'ADD_LIKE':
+    //   return {
+    //       ...state,
+    //           homepage: {
+    //             ...state.homepage,
+    //             stories: [...action.payload]
+    //   },
+    // };
+
     default:
       return state;
   }
