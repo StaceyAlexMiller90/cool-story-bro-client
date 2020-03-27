@@ -16,7 +16,10 @@ const HomePageCard = (props) => {
         <div className='center f6 f5-ns lh-copy measure mv0 pa3 bt'>
           <p>{props.description}</p>
           <Link to={`/homepages/${props.id}`}>
-                <Button>Visit page</Button>
+                <Button 
+                  style={{backgroundColor: props.color, color: props.background, border:props.background}}>
+                  Visit page 
+                </Button>
           </Link>
         </div>
     </div>

@@ -8,7 +8,8 @@ import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/button";
 import Editform from '../../components/Editform'
 import Postform from '../../components/Postform'
-
+import { selectAppLoading } from '../../store/appState/selectors'
+import { Container } from 'react-bootstrap';
 
 const MyHomepage = (props) => {
   const history = useHistory()
@@ -16,6 +17,7 @@ const MyHomepage = (props) => {
   const [ post, setPost ] = useState(false)
   const {token, homepage, id } = useSelector(selectUser)
   const key = props.location.key
+  const appLoading = useSelector(selectAppLoading)
 
   useEffect(() => {
     setEdit(false)
@@ -26,11 +28,18 @@ const MyHomepage = (props) => {
     history.push("/");
   }
 
-  if (homepage === null) {
+  if (!homepage || appLoading) {
     return <Loading />;
   }
   
   const buttons = !edit && !post ? true : false
+
+  const styles = {
+    backgroundColor: homepage.backgroundColor,
+    color: homepage.color,
+    border: homepage.backgroundColor,
+    width: '400px',
+  };
 
   return (
     <div> 
@@ -40,10 +49,12 @@ const MyHomepage = (props) => {
         title={homepage.title} 
         description={homepage.description}
       />
-      {buttons ? <div className='buttonbar'>
-                  <Button onClick={() => setEdit(true)}>Edit My Page</Button>
-                  <Button onClick={() => setPost(true)}>Post a cool story bro</Button>
-                  {!homepage.stories.length ? null : <Stories stories={homepage.stories}/>}
+      {buttons ? <div>
+                  <Container className='flex space-around'>
+                    <Button style={styles} onClick={() => setEdit(true)}>Edit My Page</Button>
+                    <Button style={styles} onClick={() => setPost(true)}>Post a cool story bro</Button>
+                  </Container>
+                  {!homepage.stories.length ? null : <Stories homepage={homepage} stories={homepage.stories}/>}
                 </div>
                : edit ? <Editform userId={id} homepageId={homepage.id}/> 
                : post ? <Postform homepageId={homepage.id}/> 

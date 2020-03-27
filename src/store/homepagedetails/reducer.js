@@ -1,21 +1,10 @@
-const initialState = {
-    stories: []
-}
+const initialState = null
 
 export default (state = initialState, action) => {
   switch (action.type) {
     
     case 'SINGLE_HOMEPAGE_DETAILS_FETCHED':
       return {...action.payload};
-    
-    // case 'ADD_LIKE':
-    //   return {
-    //       ...state,
-    //           homepage: {
-    //             ...state.homepage,
-    //             stories: [...action.payload]
-    //   },
-    // };
 
     default:
       return state;

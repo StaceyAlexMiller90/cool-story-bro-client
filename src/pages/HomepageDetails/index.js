@@ -19,17 +19,17 @@ const HomepageDetails = () => {
   }, [dispatch, id])
 
   return (
-    <> {!appLoading ? 
-      <>
-      <JumbotronHeader 
-        title={homepage.title} 
-        description={homepage.description} 
-        background={homepage.backgroundColor}
-        color={homepage.color}
-      />
-      <Stories stories={homepage.stories}/>
-    </> 
-    : <Loading />   
+    <> {appLoading || !homepage ?
+      <Loading />  
+      : <>
+        <JumbotronHeader 
+          title={homepage.title} 
+          description={homepage.description} 
+          background={homepage.backgroundColor}
+          color={homepage.color}
+        />
+        <Stories homepage={homepage} stories={homepage.stories}/>
+      </> 
       }
     </>
   )

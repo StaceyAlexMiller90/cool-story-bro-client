@@ -129,6 +129,7 @@ export const addStory = (story) => {
         }
       })
       dispatch(addStoryToHomepage(response.data))
+      dispatch(getUserWithStoredToken())
       dispatch(showMessageWithTimeout("success", false, "Post Added!", 1500))
     } catch (e) {
       console.log(e.message)

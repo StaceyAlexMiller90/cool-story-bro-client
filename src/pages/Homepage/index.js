@@ -19,8 +19,8 @@ const Homepage = (props) => {
 
   return (
     <div>
-      <Jumbotron>
-        <h1>Homepages</h1>
+      <Jumbotron style={{color: '#8D0033', backgroundColor: '#FFFFFF'}}>
+        <h1>All homepages</h1>
       </Jumbotron>
       {appLoading ? <Loading /> 
         : homepages.map(page => {
